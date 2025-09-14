@@ -28,8 +28,9 @@
         /// </summary>
         private void InitializeComponent()
         {
-            tabControl1 = new TabControl();
+            tabControl = new TabControl();
             tabLibros = new TabPage();
+            labLibros1 = new Label();
             btnEliminar = new Button();
             btnEditar = new Button();
             btnAgregar = new Button();
@@ -51,7 +52,13 @@
             btnPrestar = new Button();
             dataGridPrestamos = new DataGridView();
             tabDashboard = new TabPage();
-            tabControl1.SuspendLayout();
+            tabDocumentacion = new TabPage();
+            txtDocumentacion = new RichTextBox();
+            labLibros2 = new Label();
+            labLibros3 = new Label();
+            labUsuarios1 = new Label();
+            labUsuarios2 = new Label();
+            tabControl.SuspendLayout();
             tabLibros.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)dataGridLibros).BeginInit();
             tabUsuarios.SuspendLayout();
@@ -59,22 +66,27 @@
             tabPrestamos.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)numDias).BeginInit();
             ((System.ComponentModel.ISupportInitialize)dataGridPrestamos).BeginInit();
+            tabDocumentacion.SuspendLayout();
             SuspendLayout();
             // 
-            // tabControl1
+            // tabControl
             // 
-            tabControl1.Controls.Add(tabLibros);
-            tabControl1.Controls.Add(tabUsuarios);
-            tabControl1.Controls.Add(tabPrestamos);
-            tabControl1.Controls.Add(tabDashboard);
-            tabControl1.Location = new Point(12, 12);
-            tabControl1.Name = "tabControl1";
-            tabControl1.SelectedIndex = 0;
-            tabControl1.Size = new Size(776, 426);
-            tabControl1.TabIndex = 0;
+            tabControl.Controls.Add(tabLibros);
+            tabControl.Controls.Add(tabUsuarios);
+            tabControl.Controls.Add(tabPrestamos);
+            tabControl.Controls.Add(tabDashboard);
+            tabControl.Controls.Add(tabDocumentacion);
+            tabControl.Location = new Point(12, 12);
+            tabControl.Name = "tabControl";
+            tabControl.SelectedIndex = 0;
+            tabControl.Size = new Size(776, 426);
+            tabControl.TabIndex = 0;
             // 
             // tabLibros
             // 
+            tabLibros.Controls.Add(labLibros3);
+            tabLibros.Controls.Add(labLibros2);
+            tabLibros.Controls.Add(labLibros1);
             tabLibros.Controls.Add(btnEliminar);
             tabLibros.Controls.Add(btnEditar);
             tabLibros.Controls.Add(btnAgregar);
@@ -87,9 +99,19 @@
             tabLibros.Text = "Libros";
             tabLibros.UseVisualStyleBackColor = true;
             // 
+            // labLibros1
+            // 
+            labLibros1.AutoSize = true;
+            labLibros1.Font = new Font("Segoe UI Emoji", 12F, FontStyle.Regular, GraphicsUnit.Point, 0);
+            labLibros1.Location = new Point(50, 23);
+            labLibros1.Name = "labLibros1";
+            labLibros1.Size = new Size(222, 21);
+            labLibros1.TabIndex = 4;
+            labLibros1.Text = "📚 Bienvenido a BibliotecaAPP";
+            // 
             // btnEliminar
             // 
-            btnEliminar.Location = new Point(317, 256);
+            btnEliminar.Location = new Point(669, 351);
             btnEliminar.Name = "btnEliminar";
             btnEliminar.Size = new Size(75, 23);
             btnEliminar.TabIndex = 3;
@@ -99,7 +121,7 @@
             // 
             // btnEditar
             // 
-            btnEditar.Location = new Point(187, 256);
+            btnEditar.Location = new Point(569, 351);
             btnEditar.Name = "btnEditar";
             btnEditar.Size = new Size(75, 23);
             btnEditar.TabIndex = 2;
@@ -109,7 +131,7 @@
             // 
             // btnAgregar
             // 
-            btnAgregar.Location = new Point(60, 256);
+            btnAgregar.Location = new Point(50, 351);
             btnAgregar.Name = "btnAgregar";
             btnAgregar.Size = new Size(75, 23);
             btnAgregar.TabIndex = 1;
@@ -120,13 +142,15 @@
             // dataGridLibros
             // 
             dataGridLibros.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            dataGridLibros.Location = new Point(26, 17);
+            dataGridLibros.Location = new Point(26, 87);
             dataGridLibros.Name = "dataGridLibros";
             dataGridLibros.Size = new Size(736, 213);
             dataGridLibros.TabIndex = 0;
             // 
             // tabUsuarios
             // 
+            tabUsuarios.Controls.Add(labUsuarios2);
+            tabUsuarios.Controls.Add(labUsuarios1);
             tabUsuarios.Controls.Add(btnEliminarUsuario);
             tabUsuarios.Controls.Add(btnEditarUsuario);
             tabUsuarios.Controls.Add(btnAgregarUsuario);
@@ -141,7 +165,7 @@
             // 
             // btnEliminarUsuario
             // 
-            btnEliminarUsuario.Location = new Point(452, 322);
+            btnEliminarUsuario.Location = new Point(653, 336);
             btnEliminarUsuario.Name = "btnEliminarUsuario";
             btnEliminarUsuario.Size = new Size(75, 23);
             btnEliminarUsuario.TabIndex = 3;
@@ -151,7 +175,7 @@
             // 
             // btnEditarUsuario
             // 
-            btnEditarUsuario.Location = new Point(276, 322);
+            btnEditarUsuario.Location = new Point(561, 336);
             btnEditarUsuario.Name = "btnEditarUsuario";
             btnEditarUsuario.Size = new Size(75, 23);
             btnEditarUsuario.TabIndex = 2;
@@ -161,7 +185,7 @@
             // 
             // btnAgregarUsuario
             // 
-            btnAgregarUsuario.Location = new Point(98, 322);
+            btnAgregarUsuario.Location = new Point(69, 336);
             btnAgregarUsuario.Name = "btnAgregarUsuario";
             btnAgregarUsuario.Size = new Size(75, 23);
             btnAgregarUsuario.TabIndex = 1;
@@ -293,30 +317,93 @@
             tabDashboard.Text = "Dashboard";
             tabDashboard.UseVisualStyleBackColor = true;
             // 
+            // tabDocumentacion
+            // 
+            tabDocumentacion.Controls.Add(txtDocumentacion);
+            tabDocumentacion.Location = new Point(4, 24);
+            tabDocumentacion.Name = "tabDocumentacion";
+            tabDocumentacion.Padding = new Padding(3);
+            tabDocumentacion.Size = new Size(768, 398);
+            tabDocumentacion.TabIndex = 4;
+            tabDocumentacion.Text = "Documentacion";
+            tabDocumentacion.UseVisualStyleBackColor = true;
+            // 
+            // txtDocumentacion
+            // 
+            txtDocumentacion.BorderStyle = BorderStyle.None;
+            txtDocumentacion.Dock = DockStyle.Fill;
+            txtDocumentacion.Font = new Font("Segoe UI", 9.75F, FontStyle.Regular, GraphicsUnit.Point, 0);
+            txtDocumentacion.Location = new Point(3, 3);
+            txtDocumentacion.Name = "txtDocumentacion";
+            txtDocumentacion.ReadOnly = true;
+            txtDocumentacion.Size = new Size(762, 392);
+            txtDocumentacion.TabIndex = 0;
+            txtDocumentacion.Text = "";
+            // 
+            // labLibros2
+            // 
+            labLibros2.AutoSize = true;
+            labLibros2.ImageAlign = ContentAlignment.TopLeft;
+            labLibros2.Location = new Point(50, 318);
+            labLibros2.Name = "labLibros2";
+            labLibros2.Size = new Size(132, 15);
+            labLibros2.TabIndex = 5;
+            labLibros2.Text = "Agregar un nuevo libro:";
+            // 
+            // labLibros3
+            // 
+            labLibros3.AutoSize = true;
+            labLibros3.Location = new Point(543, 318);
+            labLibros3.Name = "labLibros3";
+            labLibros3.Size = new Size(204, 15);
+            labLibros3.TabIndex = 6;
+            labLibros3.Text = "Seleccione un libro y elija una accion:";
+            // 
+            // labUsuarios1
+            // 
+            labUsuarios1.AutoSize = true;
+            labUsuarios1.Location = new Point(69, 293);
+            labUsuarios1.Name = "labUsuarios1";
+            labUsuarios1.Size = new Size(147, 15);
+            labUsuarios1.TabIndex = 4;
+            labUsuarios1.Text = "Agregar un nuevo usuario:";
+            // 
+            // labUsuarios2
+            // 
+            labUsuarios2.AutoSize = true;
+            labUsuarios2.Location = new Point(534, 293);
+            labUsuarios2.Name = "labUsuarios2";
+            labUsuarios2.Size = new Size(219, 15);
+            labUsuarios2.TabIndex = 5;
+            labUsuarios2.Text = "Seleccione un usuario y elija una accion:";
+            // 
             // MainForm
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
             ClientSize = new Size(800, 450);
-            Controls.Add(tabControl1);
+            Controls.Add(tabControl);
             Name = "MainForm";
             Text = "BibliotecaApp";
             Load += Form1_Load;
-            tabControl1.ResumeLayout(false);
+            tabControl.ResumeLayout(false);
             tabLibros.ResumeLayout(false);
+            tabLibros.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)dataGridLibros).EndInit();
             tabUsuarios.ResumeLayout(false);
+            tabUsuarios.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)dataGridUsuarios).EndInit();
             tabPrestamos.ResumeLayout(false);
             tabPrestamos.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)numDias).EndInit();
             ((System.ComponentModel.ISupportInitialize)dataGridPrestamos).EndInit();
+            tabDocumentacion.ResumeLayout(false);
             ResumeLayout(false);
         }
 
         #endregion
 
-        private TabControl tabControl1;
+        private TabControl tabControl;
         private TabPage tabLibros;
         private TabPage tabUsuarios;
         private TabPage tabPrestamos;
@@ -339,5 +426,12 @@
         private Label label4;
         private Label label3;
         private Label label2;
+        private TabPage tabDocumentacion;
+        private RichTextBox txtDocumentacion;
+        private Label labLibros1;
+        private Label labLibros2;
+        private Label labLibros3;
+        private Label labUsuarios1;
+        private Label labUsuarios2;
     }
 }

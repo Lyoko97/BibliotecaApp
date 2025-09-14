@@ -4,6 +4,8 @@ using System.Linq;
 using System.Windows.Forms;
 using System.Drawing;
 using System.Windows.Forms.DataVisualization.Charting;
+using System.IO;
+using System.Diagnostics;
 
 namespace BibliotecaApp
 {
@@ -134,6 +136,8 @@ namespace BibliotecaApp
             UpdatePrestamoButtons();
 
             RefreshDashboard();
+
+            CargarDocumentacion();
 
         }
 
@@ -591,6 +595,43 @@ namespace BibliotecaApp
             }
         }
         private Chart chartTopBooks, chartTopUsers, chartMonthly;
+        private void CargarDocumentacion()
+        {
+            try
+            {
+                // Carpeta donde corre el .exe (bin/Debug o bin/Release)
+                string baseDir = AppContext.BaseDirectory;
 
+                string mdPath = Path.Combine(baseDir, "README.md");
+                string txtPath = Path.Combine(baseDir, "DOCUMENTACION.txt");
+                string pdfPath = Path.Combine(baseDir, "Documentacion.pdf");
+
+                if (File.Exists(mdPath))
+                {
+                    // Nota: RichTextBox no renderiza Markdown, lo mostrara como texto plano
+                    txtDocumentacion.Text = File.ReadAllText(mdPath);
+                }
+                else if (File.Exists(txtPath))
+                {
+                    txtDocumentacion.Text = File.ReadAllText(txtPath);
+                }
+                else if (File.Exists(pdfPath))
+                {
+                    txtDocumentacion.Text =
+                        "Se encontró la documentación en PDF, pero este visor es de texto.\r\n" +
+                        "Haga clic en el boton 'Abrir PDF' o abra el archivo:\r\n" +
+                        pdfPath;
+                }
+                else
+                {
+                    txtDocumentacion.Text =
+                        "No se encontró README.md, DOCUMENTACION.txt ni Documentacion.pdf\r\n";       
+                }
+            }
+            catch (Exception ex)
+            {
+                txtDocumentacion.Text = "Error al cargar la documentación:\r\n" + ex.Message;
+            }
+        }
     }
 }
